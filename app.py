@@ -6,13 +6,13 @@ from sqlalchemy import create_engine, func
 from flask import Flask, jsonify, request, render_template, redirect
 
 # database setup
-path="data/californiadisasters.sqlite"
+path="data/chessdatalichness.sqlite"
 engine=create_engine(f"sqlite:///{path}")
 
 
 # create flask app
 app=Flask(__name__)
-ignore key sort
+# ignore key sort
 app.config['JSON_SORT_KEYS'] = False
 
 
@@ -41,7 +41,7 @@ def earthquake_db():
     
     json_dict={"data":[]}
     
-    for place, time, mag, lat,lng,depth in results_list:
+    for game_id, rated, created_at, last_move, turns, victory_status, increment_code, white_id, white_rating, black_id, black_rating, Opening_Eco, Opening_Name, Opening_Ply in results_list:
         test_dict={"properties":{}}
         
         test_dict["properties"]["game_id"]=game_id
