@@ -55,7 +55,7 @@ def Load_Data(file_name):
 session = Session(engine)
 
 # load the data from CSV
-file_name = "CleanedData.csv" 
+file_name = "../../data/CleanedData.csv" 
 data = Load_Data(file_name) 
 
 for i in data:
