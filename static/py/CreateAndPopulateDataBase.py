@@ -14,7 +14,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 
 # Database Setup
-engine = create_engine("sqlite:///Resources/chessdatalichness.sqlite")
+engine = create_engine("sqlite:///../../data/chessdatalichness.sqlite")
 
 # reflect an existing database into a new model
 Base = declarative_base()
@@ -31,7 +31,7 @@ class CHESS_DATA(Base):
     game_id = Column(Integer, primary_key=True)
     rated = Column(String(5))
     created_at = Column(String(255))
-    last_move = Column(Integer)
+    last_move = Column(String(225))
     turns = Column(Integer)
     victory_status = Column(String(255))
     increment_code = Column(String(255))
