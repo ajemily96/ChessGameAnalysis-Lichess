@@ -28,20 +28,20 @@ inspector.get_table_names()
 # Creates Classes which will serve as the anchor points for our Tables
 class CHESS_DATA(Base):
     __tablename__ = 'CHESS_DATA'
-    game_id = Column(Integer, primary_key=True)
-    rated = Column(String(5))
-    created_at = Column(String(255))
-    last_move = Column(String(225))
+
+
+    id = Column(Integer, primary_key=True)
+    format = Column(String(10))
+    victory_status = Column(String(50))
+    book_moves = Column(Integer)
+    opening_name = Column(String(250))
+    winner = Column(String(5))
     turns = Column(Integer)
-    victory_status = Column(String(255))
-    increment_code = Column(String(255))
-    white_id = Column(String(255))
-    white_rating = Column(String(255))
-    black_id = Column(String(255))
-    black_rating = Column(String(255))
-    Opening_Eco = Column(String(255))
-    Opening_Name = Column(String(255))
-    Opening_Ply = Column(String(255))
+    white_id = Column(String(10))
+    white_rating = Column(Integer)
+    black_id = Column(String(10))
+    black_rating = Column(Integer)
+
 
 # Create (if not already in existence) the tables associated with our classes.
 Base.metadata.create_all(engine)
@@ -60,20 +60,17 @@ data = Load_Data(file_name)
 
 for i in data:
     record = CHESS_DATA(**{
-        'game_id' : i[0],
-        'rated' : i[1],
-        'created_at' : i[2],
-        'last_move' : i[3],
-        'turns' : i[4],
-        'victory_status' : i[5],
-        'increment_code' : i[6],
+        'id' : i[0],
+        'format' : i[1],
+        'victory_status' : i[2],
+        'book_moves' : i[3],
+        'opening_name' : i[4],
+        'winner' : i[5],
+        'turns' : i[6],
         'white_id' : i[7],
         'white_rating' : i[8],
         'black_id' : i[9],
-        'black_rating' : i[10],
-        'Opening_Eco' : i[11],
-        'Opening_Name' : i[12],
-        'Opening_Ply' : i[13]
+        'black_rating' : i[10]
     })
     session.add(record) #Add all the records
 
